@@ -1,0 +1,142 @@
+
+
+<section class="pda-chat">
+<nav class="navBar"><ul><li><a class="linkANav" href="../index"><span>H.o.m.e.</span></a></li></ul></nav>
+<section class="cabezera-titulo">
+<div class="titulo">
+<h1>P.D.A. - S.T.A.L.K.E.R.</h1><img src="img/antena.webp" alt="Titulo" width="91px">
+</div>
+<img class="lineradiation"src="img/radiation-line.webp" alt="">
+</section>
+
+<section class="section-pda-detector-inventario">
+<div class="pdaDiv">
+    <button class="btnPDA" id="btnPDA" title=" ON/OFF ❇️"></button>
+    <img class="loadingImage hidden" src="img/loading.webp" alt="Carga" id="loadingPDA">
+    <div class="pdaActivo" id="pdaCuerpo" >
+        <div class="div-senal-bateri"><img class="imgsenal" src="img/senal.webp" alt=""><img class="imgbateri" src="img/bateria.webp" alt=""></div>
+    <section class="btnSection">
+      <button id="btnChat"class="btn-pda-menu" onclick="changeSection(1)">
+        Chat
+        </button>
+          <button id="btnMapa" class="btn-pda-menu" onclick="changeSection(2)">
+        Mapa
+        </button>
+          <button id="btnStalk" class="btn-pda-menu"onclick="changeSection(3)">
+        Stalkers
+        </button>
+           <button id="btnGuia" class="btn-pda-menu"onclick="changeSection(4)">
+        Guia
+        </button>
+    </section>    
+        
+        
+
+        <section  id="section1" class="sectionpdabox">
+          <div class="titPDA"><h2>~Chat~</h2></div>
+          <div class="messageP"id="messageLogs"></div>
+          <input id="chatBox" class="chatBox">
+          <img type="button" src="img/btnEnter.webp" id="btnChatBox"class="btnChatBox" title="Enviar"></img>
+        </section>
+
+        <section  id="section2" class="sectionpdabox">
+        <div class="titPDA"><h2>~Mapa~</h2></div>
+         <div class="Maps">
+            <div id="zoom-img" class="Maps-Div-img">
+                <div id="anomaliasMap"></div>
+                <img class="imgMap" id="imgMap" src="img/mapanombre.webp" alt="Mapa-Stalker">
+            </div>
+        </div>
+        </section>
+
+          <section  id="section3" class="sectionpdabox">
+          <div class="titPDA"><h2>~Stalkers Online~</h2></div>
+         <div class="messageP" id="UsersLogs"></div>
+        </section>
+
+          <section  id="section4" class="sectionpdabox">
+          <div class="titPDA"><h2>~Guia~</h2></div>
+          <div class="messageP">
+            <ul><li><a href="#guiaUsoPDA">Manual PDA</a></li>
+            <li><a href="#guiaArtefact">Juego "Busqueda de Artefactos"</a></li></ul>
+
+            <div id="guiaUsoPDA">
+              <h2>Manual PDA</h2>
+              <p>El Asistente Digital Personal (Personal Digital Assistant), o "PDA", es un dispositivo electrónico de bolsillo 
+                que pretende abarcar las funciones básicas y más importantes de un ordenador. En la saga S.T.A.L.K.E.R. , 
+                casi todos los personajes llevan una PDA, incluyendo el jugador.</p>
+                <ul>
+                  <li><p>Chat: Para interactuar con otros Stalkers.</p> </li>
+                  <li><p>Mapa: Mapa completo de la zona de exclusión de Chernobyl.</p></li>
+                  <li><p>Stalkers: Los Stalkers conectados a la red.</p> </li>
+                  <li><p>Guia: Seccion actual con informacion valiosa.</p></li>
+                </ul>
+            </div>
+            <div id="guiaArtefact">
+              <h2>Busqueda de Artefactos</h2>
+             
+              <p>Para usar el "Detector de Artefactos" debes hacer clic en le menu Hamburguesa que se encuentra en la esquina superior izquierda 
+                de la pantalla. Al activarse debes encontrar en el mapa dicho Artefactos. Para terminar el juego, debes volver a hacer clic en el detector.
+                Si deseas reiniciar el juego debes volver activar el detector.
+              </p>
+              <img src="img/detectorcerrado.webp" alt="" width="50px">
+              <p>El "Artefacto" es invisible y su posicion es aleatoria, por lo que puede estar en cualquier parte del mapa. ¿Como encontrarlo? Al acercarte con el mouse transformado en "Detector",
+                comenzara a emitirse un sonido, el mismo se intensificara al estar proximo al artefacto y se hace visible al estar posado sobre el.
+              </p>
+              <p>  Forma del Artefacto: 
+                <img src="img/stalkeritems/artefacto1.webp" alt="" width="50px"></p>
+            </div>
+          </div>
+         
+        </section>
+        
+        
+       
+    </div>
+</div>
+
+<label class="popup">
+  <input type="checkbox">
+  <div class="burger" tabindex="0">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  <nav class="popup-window">
+    <legend>Menu</legend>
+    <ul>
+      <li>
+       <img class="detectorimg" id="detector" type="buttom" src="img/detectorcerrado.webp" alt="Detector" title="Detector de Artefactos">
+      </li>
+      <li>
+        <img class="inventory" id="inventory"src="img/stalkeritems/mochila.webp" alt="" type="buttom" title="Inventario">
+      </li>
+      
+    </ul>
+  </nav>
+</label>
+
+
+    
+    
+</div>
+
+</section>
+
+</section>
+
+
+
+
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> <!-- activamos sweetalert importamos la dependencia de manera publica -->
+<script src="/socket.io/socket.io.js"></script><!--Archivo de Node Modules para usar Socket.io dependencia-->
+
+<script type="module" src="/js/main.js"></script>
+<script type="module" src="/js/index.js"></script> <!-- Archivo de la carpeta public es como poner href="localhost:8080...public/js/index.js"  -->
+<script src="/js/btnpda.js"></script>
+<!--type="module" es para que pueda aceptar modulos es decir archivos js-->
