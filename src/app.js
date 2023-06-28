@@ -42,7 +42,7 @@ io.on('connection',socket=>{
     socket.on('authenticated',data=>{
         socket.emit('messageLogs',messages); //socket emit se envia al usuairo que se acaba de conectar.
         socket.broadcast.emit('newStalkerConnect',data); //enviamos a todos los usuarios menos al que se acaba de conectar, la conexion del nuevo usuario.
-    
+       
     });
 })
 

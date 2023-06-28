@@ -435,6 +435,9 @@ p{
   top: 5px;
   left: 5px;
   overflow: auto;
+  scroll-behavior: smooth;
+  transition-property: scroll-left, scroll-top;
+  transition-duration: 500ms;
 }
 
 
@@ -1169,4 +1172,43 @@ left: 13rem;}
 
 .btn-pda-menu:where(:hover, :focus) {
   color: #fff;
+}
+
+
+.seccionBtnLocation{
+  display: flex;
+    height: 100%;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+
+
+.btn-pda-location {
+  --border-color: linear-gradient(-45deg, #707070, #31324f, #31334f);
+  --border-width: .125em;
+  --curve-size: .5em;
+  --color: #b3b5c6;
+  color: var(--color);
+  isolation: isolate;
+  display: inline-grid;
+  place-content: center;
+  padding: 0.5em 1.5em;
+  font-size: 8px;
+  border: 0;
+  text-transform: uppercase;
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, .6);
+  clip-path: polygon( /* Top-left */ 0% var(--curve-size), var(--curve-size) 0, /* top-right */ 100% 0, 100% calc(100% - var(--curve-size)), /* bottom-right 1 */ calc(100% - var(--curve-size)) 100%, /* bottom-right 2 */ 0 100%);
+  transition: 0.5s;
+  cursor: url(../img/mouse/handpoint.webp), pointer;
+  background: #31324f;
+  margin-bottom: 5px;
+  margin-right: 5px;
+}
+
+.btn-pda-location:hover{
+  transition: 0.5s;
+  color:white;
 }

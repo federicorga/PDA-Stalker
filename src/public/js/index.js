@@ -12,7 +12,7 @@ const zoom=document.getElementById('zoom-img');
 const chatBox=document.getElementById('chatBox');
 const btnEnviar=document.getElementById('btnChatBox');
 const log = document.getElementById('messageLogs'); //esta es la etiqueta p donde se van a mostrar los mensajes
-const UsersLogs=document.getElementById('UsersLogs');
+
 const audioA= new Audio('audio/beepDetector.mp3');
 const audioB = new Audio('audio/beepDetector.mp3');
 const audioC= new Audio('audio/beepDetector.mp3');
@@ -38,6 +38,8 @@ Swal.fire({ // al usar el then es como una promesa
 }).then(result=>{
     user=result.value; //asignamos el valor del input a el let usuer (que esta arriba)--> esto no se envia al servidor
     socket.emit('authenticated',user);
+    
+   
     zoom.scrollTo(510,3990); //me posiciona en el punto que quiero en el mapa de la PDA
 
 });
@@ -105,10 +107,12 @@ let messag = '';
 
 
 
+
+
+
 const audioNewStalker = new Audio('audio/stalker-new-stalker.mp3');
 socket.on('newStalkerConnect',data=>{
 audioNewStalker.play();
-userActivos(data);
     Swal.fire({
         toast:true,
         position:'top-end',
@@ -117,7 +121,7 @@ userActivos(data);
         title:`Nuevo S.T.A.L.K.E.R. conectado: ${data}`,
         icon:"success",
     });
-  
+
     
 });
 
@@ -145,16 +149,7 @@ if(pdaCuerpo.classList.contains('pdaCuerpo')){
     
 });
 
-async function  userActivos(data){
-    let datos= await data;
-    let user='';
 
-    datos.forEach(users=>{
-        user=+`<section><p>HOla mi nombre es: ${users}</p></section>`
-    });
-
-    UsersLogs.innerHTML=user;
-}
 
 function zoomMap(){
     const imgMap = document.getElementById('imgMap');
@@ -166,6 +161,7 @@ function zoomMap(){
       imgMap.style.transformOrigin = `${mouseX}px ${mouseY}px`;
       // Hacer zoom en el punto donde se hizo clic
       imgMap.classList.toggle('zoom');
+   
     
 
     });
@@ -174,7 +170,21 @@ function zoomMap(){
 
 
 
+// Obtén todos los botones de ubicación
+var buttons = document.querySelectorAll('.scroll-button');
 
+// Recorre cada botón y agrega un evento de clic
+buttons.forEach(function(button) {
+  button.addEventListener('click', function() {
+    // Obtén las coordenadas del botón específico
+    var posX = parseInt(button.getAttribute('data-posX'));
+    var posY = parseInt(button.getAttribute('data-posY'));
+    
+    // Desplázate a las coordenadas especificadas en el elemento de mapa
+    
+    zoom.scrollTo(posX, posY);
+  });
+});
 
 function detectorAnomalia(){
     const detector=document.getElementById('detector');
@@ -193,7 +203,7 @@ function detectorAnomalia(){
             detector.style.position="relative";
             
           
-            console.log("entro en True")
+            
             anomaly.anomaliaRender(anomaliasMap);
             anomaly.anomaliaSonido(true,audioA,audioB,audioC);
             activador=true;
@@ -203,7 +213,7 @@ function detectorAnomalia(){
             detector.style.position="relative";
             detector.style.bottom="1px"
           
-            console.log("entro en")
+          
             detector.src="img/detectorcerrado.webp"
             detector.style.width = "7rem";
             anomaly.anomaliaSonido(false,audioA,audioB,audioC);
